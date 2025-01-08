@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                 document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                 document.getElementById('activity-1').style.display = 'none';
+                 document.getElementById('activity-5').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M22.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Bienvenida y preparación para el reto de impresión 3D.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy pondremos en práctica lo que aprendimos sobre 'Slicing' en AstroPrint para crear un objeto personalizado: un llavero articulado. Este reto combina diseño y funcionalidad, así que prepárense para poner a prueba sus habilidades en la impresión 3D."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar, quiero saber cómo se sienten hoy. Si están listos para diseñar, den una palmada. Si necesitan un momento para enfocarse, coloquen ambas manos sobre sus piernas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos en agradecimiento por esta oportunidad de crear y aprender juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Nuestros objetivos para hoy son dos: 1. Diseñar un llavero articulado de múltiples piezas que no necesite soportes para imprimirse. 2. Preparar el modelo en AstroPrint para imprimirlo en una hora como máximo."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🖐️ Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Actividad para estimular la creatividad.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Juego de Palabras".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a hacer una pausa creativa. En un círculo, cada uno deberá decir una palabra relacionada con el diseño o la impresión 3D. Esto ayudará a estimular nuestra creatividad y a preparar nuestras mentes para el reto de hoy."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 1 minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Palabras".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Muy bien! Este ejercicio nos ayuda a estimular el pensamiento rápido y la creatividad, preparando nuestras mentes para el diseño."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 6 minutos</div>
+        <div class="subtitle">Organización de equipos y preparación del reto usando Kanban.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para este reto formen equipos de dos personas. Tómense un minuto para elegir a su compañero o compañera y sentarse juntos."</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen sus equipos, envíen a un representante a recoger una Magic Tablet para su equipo."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1.5 minutos):</strong> Proyectar Diapositiva 13 "Recordatorio de Kanban Digital".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy volveremos a usar el tablero Kanban para organizar nuestro trabajo. Accedan a https://scrumboard.org/ y creen un tablero para su proyecto. Recuerden que esta herramienta nos ayuda a visualizar nuestras tareas y a mantener un flujo de trabajo organizado. Al igual que un equipo de producción organiza su trabajo en una línea de ensamblaje, Kanban nos permite planificar cada paso."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 6 (1.5 minutos):</strong> Proyectar Diapositiva 14 "Planificación de Tareas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En su tablero, creen las columnas 'Pendientes', 'En progreso' y 'Hecho'.  Luego, agreguen las tareas necesarias para el reto, como diseñar las piezas del llavero, unirlas y luego prepararlas para la impresión en AstroPrint.  Usen las tarjetas para asignar responsabilidades y mantener un seguimiento del progreso. Una buena planificación es la base para alcanzar nuestros objetivos de forma eficiente y organizada."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 37.5 minutos</div>
+        <div class="subtitle">Diseño y preparación para impresión 3D de llaveros articulados en AstroPrint.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 15 "Challenge".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de poner a prueba sus habilidades en el diseño 3D y la impresión. En este Challenge, diseñarán un llavero articulado que podrán imprimir usando AstroPrint. ¡Prepárense para usar toda su creatividad!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutes):</strong> Proyectar Diapositiva 16 "Diseño y Preparación del Llavero".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Su reto consiste en diseñar un llavero articulado de múltiples piezas en TinkerCAD y que no necesite soportes para imprimirse.  Luego, exportarán el modelo y lo subirán a AstroPrint, donde harán el 'Slicing' para que el llavero se pueda imprimir en una hora como máximo.  Los niveles de dificultad son:
+                 <ul>
+                    <li><strong>Rookie:</strong> Diseñar un llavero articulado de al menos 3 piezas en TinkerCAD que no necesite soportes para imprimir.</li>
+                    <li><strong>Master:</strong> (+) Exportar el modelo como STL, subirlo a AstroPrint, hacer el Slicing y asegurarse de que pueda imprimirse en menos de una hora.</li>
+                    <li><strong>Hacker:</strong> (+) Diseñar un llavero articulado de al menos 5 piezas, sin soportes, y subirlo a AstroPrint, asegurándose de que se imprima en menos de una hora con la mejor calidad posible.</li>
+                 </ul>
+                 Imaginen que están diseñando un prototipo para un producto que quieren vender en el futuro, donde la estética y la funcionalidad son igual de importantes.  Utilicen todas las técnicas que hemos aprendido para crear diseños precisos y funcionales. Recuerden que el diseño creativo y el buen manejo de las herramientas es la clave para alcanzar el éxito."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (25 minutos):</strong> Proyectar Diapositiva 17 "Cronómetro - 25 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (3 minutos):</strong> Proyectar Diapositiva 18 "Presentación de Llaveros".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, cada equipo tendrá dos minutos para mostrar sus llaveros articulados al resto de la clase. Expliquen cómo diseñaron las piezas para que encajaran, cómo configuraron el Slicing en AstroPrint y qué estrategias utilizaron para reducir el tiempo de impresión.  Compartir sus experiencias les ayudará a aprender de otros y a consolidar sus conocimientos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (5 minutos):</strong> Proyectar Diapositiva 19 "Cronómetro - 5 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 20 "Objetivos Alcanzados".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos cumplido todos los objetivos de esta misión.  Han diseñado un llavero articulado que no necesita soportes, lo han exportado y lo han subido a AstroPrint y lo han configurado para que se imprima en un tiempo máximo de una hora. ¡Excelente trabajo, Genios!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 21 "You've Got Mon-e".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Han demostrado su habilidad para crear diseños articulados y para preparar modelos para la impresión 3D.  Todos se llevan Mon-e por su esfuerzo y creatividad. ¡Sigan explorando y creando nuevas cosas!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cierre de la clase y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 22 "Honor the Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos llegado al final de la misión de hoy. Por favor, cada equipo pase al frente para devolver su Magic Tablet y asegúrense de dejar sus áreas de trabajo limpias y organizadas. Recuerden que el orden refleja nuestro respeto por el aprendizaje. ¡Gracias a todos por su colaboración!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
